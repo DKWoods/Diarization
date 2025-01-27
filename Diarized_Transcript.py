@@ -30,14 +30,23 @@ def diarize(file_name):
         print('Then use "python -m pip install pyannote.audio".')
         exit(1)
 
-    # Define the pyannote access token.  
-    f = open('pyannote access token.txt', 'rb')
-    ACCESS_TOKEN = f.read().strip()
-    f.close()
+    try:
+        # Define the pyannote access token.  
+        f = open('pyannote access token.txt', 'rb')
+        ACCESS_TOKEN = f.read().strip()
+        f.close()
+    except:
+        print('To process speaker identification, you need a "pyannote/segmentation" access token.')
+        print('Go to "https://huggingface.co/pyannote/segmentation" to get a token and place it in ')
+        print('a text file called "pyannote access token.txt" in this directory.')
+        print()
+        exit(1)
     
     # Define the pyannote.audio pipeline
     pipeline = Pipeline.from_pretrained("pyannote/speaker-diarization-3.1",  # WAS @2.1
                                     use_auth_token=ACCESS_TOKEN)
+    # Starting to explore embedding these libraries, but I haven't cracked it yet.
+#    pipeline = Pipeline.from_pretrained("config_diarize.yaml")
 
     # Determine whether a CUDA (Win, Linux) or MPS (macOS) GPU is available to speed processing
     if torch.cuda.is_available():
@@ -60,7 +69,7 @@ def diarize(file_name):
     # Note the start time
     now = time.time()
     # Get diarization data from the pyannote.audio pipeline
-    diarization = pipeline({"waveform": waveform, "sample_rate": sample_rate}, min_speakers=0, max_speakers=100)
+    diarization = pipeline({"waveform": waveform, "sample_rate": sample_rate})  # , min_speakers=0, max_speakers=100)
     
     print()
     print('Diarization took {0:5.1f} using {1}.'.format(time.time() - now, device))

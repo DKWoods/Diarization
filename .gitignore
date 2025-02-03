@@ -164,3 +164,9 @@ Media/20081007 Presidential Debate-Analysis.wav
 pyannote access token.txt
 .project
 .pydevproject
+/DELETE
+.settings/org.eclipse.core.resources.prefs
+pyannote_access_token.txt
+models/pyannote_model_wespeaker-voxceleb-resnet34-LM.bin
+models/pytorch_model_segmentation-3.0.bin
+/venv311-whisper

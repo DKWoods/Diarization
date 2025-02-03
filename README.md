@@ -14,6 +14,13 @@ These are all current module versions as I write this.
 (> 10 years) desktop with an NVidia GeForce GT 545 video card.  No GPU is accessible on this second test computer, so it used "cpu" rather than "cuda" during
 diarization.
 * Processing time varies widely between computers.
+## Using this code sample
+At present, create a virtual environment and use pip to import requirements.txt.  Then run "Diarize.py" to see what the program does.  There is a boolean variable 
+called EMBED that switches between the normal mode that downloads models from HuggingFace and the embedded or "offline" mode.  You will need to create a file called
+"pyannote_access_token.txt" that contains your pyannote access token to use the normal mode.  Then use "setup-Diarize.py" to create a distributable build.  
+Alternately, you can use pip to import "requirements with faster whisper.txt" and use "Diarized_Transcript.py".  At this time, this program requires a
+pyannote access token for normal on-line diarization and will mix diarization information with transcription information created by faster-whisper.  I have not
+written a PyInstaller file for this version yet.  
 ## What I've learned:
 ### Embedding torch libraries
 I found several descriptions of how to embed the pyannote models, including 

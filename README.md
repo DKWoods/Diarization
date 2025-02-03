@@ -21,6 +21,7 @@ called EMBED that switches between the normal mode that downloads models from Hu
 Alternately, you can use pip to import "requirements with faster whisper.txt" and use "Diarized_Transcript.py".  At this time, this program requires a
 pyannote access token for normal on-line diarization and will mix diarization information with transcription information created by faster-whisper.  I have not
 written a PyInstaller file for this version yet.  
+Unfortunately, two of the four sample audio files this sample user are too large for GitHub.  
 ## What I've learned:
 ### Embedding torch libraries
 I found several descriptions of how to embed the pyannote models, including 

@@ -170,3 +170,4 @@ pyannote_access_token.txt
 models/pyannote_model_wespeaker-voxceleb-resnet34-LM.bin
 models/pytorch_model_segmentation-3.0.bin
 /venv311-whisper
+.DS_Store

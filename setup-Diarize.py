@@ -1,11 +1,30 @@
+import platform
 import shutil
 import PyInstaller.__main__
 
 parameters = []
-parameters.append('--add-binary=venv311/Lib/site-packages/asteroid_filterbanks:asteroid_filterbanks')
-parameters.append('--add-binary=venv311/Lib/site-packages/lightning_fabric:lightning_fabric')
-parameters.append('--add-binary=venv311/Lib/site-packages/pyannote:pyannote')
-parameters.append('--add-binary=venv311/Lib/site-packages/speechbrain:speechbrain')
+
+print()
+
+if platform.platform().upper().startswith('WINDOWS'):
+
+    print('Windows')
+    
+    parameters.append('--add-binary=venv311/Lib/site-packages/asteroid_filterbanks:asteroid_filterbanks')
+    parameters.append('--add-binary=venv311/Lib/site-packages/lightning_fabric:lightning_fabric')
+    parameters.append('--add-binary=venv311/Lib/site-packages/pyannote:pyannote')
+    parameters.append('--add-binary=venv311/Lib/site-packages/speechbrain:speechbrain')
+elif platform.platform().upper().startswith('MACOS'):
+
+    print('macOS')
+    
+    parameters.append('--add-binary=venv311/lib/python3.11/site-packages/asteroid_filterbanks:asteroid_filterbanks')
+    parameters.append('--add-binary=venv311/lib/python3.11/site-packages/lightning_fabric:lightning_fabric')
+    parameters.append('--add-binary=venv311/lib/python3.11/site-packages/pyannote:pyannote')
+    parameters.append('--add-binary=venv311/lib/python3.11/site-packages/speechbrain:speechbrain')
+
+print()
+
 parameters.append('--name=Diarize')
 parameters.append('Diarize.py')
 
